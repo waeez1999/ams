@@ -7,7 +7,7 @@
             <div class="card bg-light mb-3">
                 <div class="card-header">
                     Applicant Information
-                    <a href="" class="btn btn-primary btn-sm">View All Applicants</a>
+                    <a href="{{ url('all-applicants') }}" class="btn btn-primary btn-sm">View All Applicants</a>
                 </div>
                 <div class="card-body">
 

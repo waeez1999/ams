@@ -24,5 +24,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Application Routes
 
+Route::get('/all-applicants', [ApplicationController::class, 'index'])->name('allApplicant');
 Route::get('/add-applicant', [ApplicationController::class, 'create'])->name('addApplicant');
 Route::post('/add-applicant', [ApplicationController::class,'store']);

@@ -15,7 +15,8 @@ class ApplicationController extends Controller
 
 
     public function index(){
-        return "All Applicants";
+        $applications = Application::all();
+        return view('application.all', compact('applications'));
     }
 
     public function create(){

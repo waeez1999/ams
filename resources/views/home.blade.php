@@ -8,7 +8,7 @@
                 <div class="card-body text-white">
                   <h5 class="card-title">Application Form</h5>
                   <p class="card-text"></p>
-                  <a href="{{ route('addApplicant') }}" class="btn btn-light">Add New Applicant</a>
+                  <a href="{{ url('add-applicant') }}" class="btn btn-light">Add New Applicant</a>
                 </div>
               </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="card-body text-white">
                   <h5 class="card-title">All Applications</h5>
                   <p class="card-text"></p>
-                  <a href="{{ route('addApplicant') }}" class="btn btn-light">View All Applications</a>
+                  <a href="{{ url('all-applicants') }}" class="btn btn-light">View All Applications</a>
                 </div>
               </div>
         </div>
