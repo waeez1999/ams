@@ -36,16 +36,37 @@ class ApplicationController extends Controller
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
             $file->move('uploads/client_picture', $filename);
-            $application->c_image = $request->input('c_image');
+            $application->c_image = $filename;
+        }else{
+            $application->c_image = '/uploads/default/no-image.png';
         }
+
         $application->applicant_cnic_number = $request->input('applicant_cnic_number');
 
+        if($request->hasFile('applicant_cnic_image')){
+            $file2 = $request->file('applicant_cnic_image');
+            $extention2 = $file2->getClientOriginalExtension();
+            $filename2 = time().'.'.$extention2;
+            $file2->move('uploads/applicant_cnic', $filename2);
+            $application->applicant_cnic_image = $filename2;
+        }else{
+            $application->applicant_cnic_image = '/uploads/default/no-image.png';
+        }
 
-        $application->applicant_cnic_image = $request->input('applicant_cnic_image');
         $application->applicant_passport_number = $request->input('applicant_passport_number');
 
 
-        $application->applicant_passport_image = $request->input('applicant_passport_image');
+
+        if($request->hasFile('applicant_passport_image')){
+            $file3 = $request->file('applicant_passport_image');
+            $extention3 = $file3->getClientOriginalExtension();
+            $filename3 = time().'.'.$extention3;
+            $file3->move('uploads/applicant_passport', $filename3);
+            $application->applicant_passport_image = $filename3;
+        }else{
+            $application->applicant_passport_image = '/uploads/default/no-image.png';
+        }
+
         $application->applicant_mailing_address = $request->input('applicant_mailing_address');
         $application->applicant_district = $request->input('applicant_district');
         $application->applicant_city = $request->input('applicant_city');
@@ -59,12 +80,29 @@ class ApplicationController extends Controller
         $application->nominee_relation_with_applicant = $request->input('nominee_relation_with_applicant');
         $application->nominee_cnic_number = $request->input('nominee_cnic_number');
 
+        if($request->hasFile('nominee_cnic_image')){
+            $file4 = $request->file('nominee_cnic_image');
+            $extention4 = $file4->getClientOriginalExtension();
+            $filename4 = time().'.'.$extention4;
+            $file4->move('uploads/nominee_cnic', $filename4);
+            $application->nominee_cnic_image = $filename4;
+        }else{
+            $application->nominee_cnic_image = '/uploads/default/no-image.png';
+        }
 
-        $application->nominee_cnic_image = $request->input('nominee_cnic_image');
         $application->nominee_passport_number = $request->input('nominee_passport_number');
 
 
-        $application->nominee_passport_image = $request->input('nominee_passport_image');
+        if($request->hasFile('nominee_passport_image')){
+            $file6 = $request->file('nominee_passport_image');
+            $extention6 = $file6->getClientOriginalExtension();
+            $filename6 = time().'.'.$extention6;
+            $file6->move('uploads/nominee_passport', $filename6);
+            $application->nominee_passport_image = $filename6;
+        }else{
+            $application->nominee_passport_image = '/uploads/default/no-image.png';
+        }
+
         $application->nominee_mailing_address = $request->input('nominee_mailing_address');
         $application->nominee_district = $request->input('nominee_district');
         $application->nominee_city = $request->input('nominee_city');
@@ -81,10 +119,21 @@ class ApplicationController extends Controller
         $application->apartment_payment_plan = $request->input('apartment_payment_plan');
         $application->apartment_downpayment = $request->input('apartment_downpayment');
 
+        if($request->hasFile('apartment_payment_prove_image')){
+            $file5 = $request->file('apartment_payment_prove_image');
+            $extention5 = $file5->getClientOriginalExtension();
+            $filename5 = time().'.'.$extention5;
+            $file5->move('uploads/apartment_payment_prove', $filename5);
+            $application->apartment_payment_prove_image = $filename5;
+        }else{
+            $application->apartment_payment_prove_image = '/uploads/default/no-image.png';
+        }
 
-        $application->apartment_payment_prove_image = $request->input('apartment_payment_prove_image');
+        
         $application->apartment_payment_drawn_on = $request->input('apartment_payment_drawn_on');
 
-        return view('application.create');
+        $application->save();
+
+        return redirect()->back()->with('status','Record Added Successfully');
     }
 }
