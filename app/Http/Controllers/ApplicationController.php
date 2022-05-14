@@ -19,6 +19,11 @@ class ApplicationController extends Controller
         return view('application.all', compact('applications'));
     }
 
+
+    public function display(Application $applicant){
+        return view('application.view', compact('applicant'));
+    }
+
     public function create(){
         return view('application.create');
     }
@@ -43,7 +48,6 @@ class ApplicationController extends Controller
         }
 
         $application->applicant_cnic_number = $request->input('applicant_cnic_number');
-
         if($request->hasFile('applicant_cnic_image')){
             $file2 = $request->file('applicant_cnic_image');
             $extention2 = $file2->getClientOriginalExtension();
@@ -53,11 +57,7 @@ class ApplicationController extends Controller
         }else{
             $application->applicant_cnic_image = '/uploads/default/no-image.png';
         }
-
         $application->applicant_passport_number = $request->input('applicant_passport_number');
-
-
-
         if($request->hasFile('applicant_passport_image')){
             $file3 = $request->file('applicant_passport_image');
             $extention3 = $file3->getClientOriginalExtension();
@@ -67,7 +67,6 @@ class ApplicationController extends Controller
         }else{
             $application->applicant_passport_image = '/uploads/default/no-image.png';
         }
-
         $application->applicant_mailing_address = $request->input('applicant_mailing_address');
         $application->applicant_district = $request->input('applicant_district');
         $application->applicant_city = $request->input('applicant_city');
@@ -80,7 +79,6 @@ class ApplicationController extends Controller
         $application->nominee_guardian = $request->input('nominee_guardian');
         $application->nominee_relation_with_applicant = $request->input('nominee_relation_with_applicant');
         $application->nominee_cnic_number = $request->input('nominee_cnic_number');
-
         if($request->hasFile('nominee_cnic_image')){
             $file4 = $request->file('nominee_cnic_image');
             $extention4 = $file4->getClientOriginalExtension();
@@ -90,10 +88,7 @@ class ApplicationController extends Controller
         }else{
             $application->nominee_cnic_image = '/uploads/default/no-image.png';
         }
-
         $application->nominee_passport_number = $request->input('nominee_passport_number');
-
-
         if($request->hasFile('nominee_passport_image')){
             $file6 = $request->file('nominee_passport_image');
             $extention6 = $file6->getClientOriginalExtension();
@@ -103,7 +98,6 @@ class ApplicationController extends Controller
         }else{
             $application->nominee_passport_image = '/uploads/default/no-image.png';
         }
-
         $application->nominee_mailing_address = $request->input('nominee_mailing_address');
         $application->nominee_district = $request->input('nominee_district');
         $application->nominee_city = $request->input('nominee_city');
@@ -119,7 +113,6 @@ class ApplicationController extends Controller
         $application->apartment_net_price = $request->input('apartment_net_price');
         $application->apartment_payment_plan = $request->input('apartment_payment_plan');
         $application->apartment_downpayment = $request->input('apartment_downpayment');
-
         if($request->hasFile('apartment_payment_prove_image')){
             $file5 = $request->file('apartment_payment_prove_image');
             $extention5 = $file5->getClientOriginalExtension();
@@ -129,12 +122,8 @@ class ApplicationController extends Controller
         }else{
             $application->apartment_payment_prove_image = '/uploads/default/no-image.png';
         }
-
-        
         $application->apartment_payment_drawn_on = $request->input('apartment_payment_drawn_on');
-
         $application->save();
-
         return redirect()->back()->with('status','Record Added Successfully');
     }
 }

@@ -27,3 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/all-applicants', [ApplicationController::class, 'index'])->name('allApplicant');
 Route::get('/add-applicant', [ApplicationController::class, 'create'])->name('addApplicant');
 Route::post('/add-applicant', [ApplicationController::class,'store']);
+Route::get('/applicants/{id}', [ApplicationController::class,'display']);

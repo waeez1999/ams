@@ -8,7 +8,20 @@
 </style>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12 table-responsive">
+        <div class="col-md-6 bg-dark pt-3 ps-3 pb-2">
+            <div class="headerTitle">
+                <h2 class="text-white">ALL APPLICANTS</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 bg-dark pt-3 pe-3 pb-2">
+            <div class="headerTitle text-end">
+                <a href="#" class="btn btn-primary">Add New</a>
+                <a href="#" class="btn btn-danger">Trashed</a>
+            </div>
+        </div>
+        <div class="col-md-12 table-responsive p-3 bg-white border">
+            
             <table  class="table  table-bordered table-hover  table-striped">
                 <thead>
                     <tr>
@@ -43,7 +56,7 @@
                         <td>{{$application->apartment_size}}</td>
                         <td>{{$application->apartment_floor}}</td>
                         <td><a href="" class="btn btn-primary">Edit</a></td>
-                        <td><a href="" class="btn btn-success">View</a></td>
+                        <td><a href="{{ url('/applicant/'.$application->id) }}" class="btn btn-success">View</a></td>
                         <td><a href="" class="btn btn-danger">Delete</a></td>
                     </tr>
 
