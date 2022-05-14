@@ -7,14 +7,17 @@
     }
 </style>
 
-@if($applications)
+@foreach($application_data as $application)
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 bg-dark pt-3 ps-3 pb-2">
             <div class="headerTitle">
-                <h2 class="text-white">{{ $applications->applicant_guardian }}</h2>
             </div>
         </div>
+
+        <pre>
+        {{ dd($application) }}
+        </pre>
 
         <div class="col-md-6 bg-dark pt-3 pe-3 pb-2">
             <div class="headerTitle text-end">
@@ -25,7 +28,7 @@
 
     </div>
 </div>
-@endif
+@endforeach
 
 
 @endsection

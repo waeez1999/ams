@@ -20,8 +20,9 @@ class ApplicationController extends Controller
     }
 
 
-    public function display(Application $applicant){
-        return view('application.view', compact('applicant'));
+    public function display($id){
+        $application_data = Application::all()->where('id',$id)->get();
+        return view('application.view')->with('application_data',$application_data);
     }
 
     public function create(){
